@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "hello": "npm:hello",
+    "world": "https://world.example/",
+    "goodbye/": "node:util/"
+  }
+}

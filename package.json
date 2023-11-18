@@ -1,74 +1,18 @@
 {
-	"name": "import-remap",
-	"description": "Rewrite ES module import specifiers using an import-map",
-	"version": "0.6.0",
-	"main": "src/index.js",
-	"bin": {
-		"import-remap": "./scripts/import-remap"
-	},
-	"scripts": {
-		"prepare": "npm run build",
-		"build-all": "node scripts/build-all.js",
-		"build": "npm run build-all"
-	},
-	"dependencies": {
-		"@babel/generator": "~7.22.5",
-		"@babel/parser": "~7.22.5",
-		"@babel/traverse": "~7.22.5",
-		"@babel/types": "~7.22.5",
-		"dotenv": "~16.3.1",
-		"micromatch": "~4.0.5",
-		"minimist": "~1.2.8",
-		"mkdirp": "~3.0.1",
-		"recursive-readdir-sync": "~1.0.6",
-		"terser": "~5.18.1"
-	},
-	"devDependencies": {
-		"moduloze": "~0.9.1"
-	},
-	"mz-dependencies": {
-		"cli.js": "CLI",
-		"index.js": "ImportRemap",
-		":::path": "NodePath",
-		":::fs": "NodeFS",
-		":::os": "NodeOS",
-		":::@babel/generator": "BabelGenerator",
-		":::@babel/parser": "BableParser",
-		":::@babel/traverse": "BabelTraverse",
-		":::@babel/types": "BabelTypes",
-		":::dotenv": "DotEnv",
-		":::micromatch": "Micromatch",
-		":::minimist": "Minimist",
-		":::mkdirp": "MkDirP",
-		":::recursive-readdir-sync": "RecursiveReaddirSync",
-		":::terser": "Terser"
-	},
-	"exports": {
-		".": {
-			"import": "./dist/esm/index.mjs",
-			"default": "./src/index.js"
-		},
-		"./cli": {
-			"import": "./dist/esm/cli.mjs",
-			"default": "./src/cli.js"
-		}
-	},
-	"repository": "getify/import-remap",
-	"keywords": [
-		"cjs",
-		"esm",
-		"umd",
-		"module",
-		"import",
-		"import-map",
-		"transpiler",
-		"convert"
-	],
-	"bugs": {
-		"url": "https://github.com/getify/import-remap/issues",
-		"email": "getify@gmail.com"
-	},
-	"homepage": "https://github.com/getify/import-remap",
-	"author": "Kyle Simpson <getify@gmail.com>",
-	"license": "MIT"
+  "name": "import-remap",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "cd test && node ../main.js index.js"
+  },
+  "dependencies": {
+    "common-ancestor-path": "^1.0.1",
+    "es-module-lexer": "^1.4.1",
+    "glob": "^10.3.10"
+  },
+  "exports": null,
+  "bin": "main.js",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.9.1"
+  }
 }

@@ -26,8 +26,8 @@ Consider this ES module:
 // import statement/call forms
 import { addFriend } from "friends";
 import render from "friends/render";
-import("friends/list").then(function(list){
-    // ..
+import("friends/list").then(function (list) {
+  // ..
 });
 
 // supported export statement forms
@@ -62,8 +62,8 @@ The remapped output file will look like this:
 // import statement/call forms
 import { addFriend } from "./packages/friends.mjs";
 import render from "./packages/friends/render.mjs";
-import("./packages/contrib/friends-list.mjs").then(function(list){
-    // ..
+import("./packages/contrib/friends-list.mjs").then(function (list) {
+  // ..
 });
 
 // supported export statement forms
@@ -81,7 +81,7 @@ import manager from "friends/manager";
 
 As you can see, there's no fancy matching logic in the string values. Only exact matches (case-sensitive!) are replaced.
 
-**Note:** This strict matching doesn't *exactly* follow the current proposed (and fluctuating) import-map behaviors; behavior adherence is expected in the future when the specification for import-map is finalized.
+**Note:** This strict matching doesn't _exactly_ follow the current proposed (and fluctuating) import-map behaviors; behavior adherence is expected in the future when the specification for import-map is finalized.
 
 ## CLI
 
@@ -98,27 +98,27 @@ See `import-remap --help` for a list of available parameter flags.
 
 ### CLI Flags
 
-* `--from=PATH`: specifies the path to a directory (or a single file) containing the files to duplicate (and remap, if applicable) into the `--to`-sepcified target location; defaults to `./` in the current working directory
+- `--from=PATH`: specifies the path to a directory (or a single file) containing the files to duplicate (and remap, if applicable) into the `--to`-sepcified target location; defaults to `./` in the current working directory
 
-* `--to=PATH`: specifies the path to a directory to write the remapped ES module file(s); defaults to a directory called `./.remapped` in the same location as the `--from`-specified path
+- `--to=PATH`: specifies the path to a directory to write the remapped ES module file(s); defaults to a directory called `./.remapped` in the same location as the `--from`-specified path
 
-* `--map=PATH`: specifies the path to the JSON import-map file to use for remapping; defaults to "./import-map.json"
+- `--map=PATH`: specifies the path to the JSON import-map file to use for remapping; defaults to "./import-map.json"
 
-* `--keep` (alias `-k`): specify a [glob pattern](https://github.com/micromatch/micromatch#matching-features) for ignoring remap processing on an input file path -- keeps/copies the file from the input path untouched if matched; multiple keep-patterns can be specified by using `--keep` / `-k` multiple times in the command
+- `--keep` (alias `-k`): specify a [glob pattern](https://github.com/micromatch/micromatch#matching-features) for ignoring remap processing on an input file path -- keeps/copies the file from the input path untouched if matched; multiple keep-patterns can be specified by using `--keep` / `-k` multiple times in the command
 
-* `--ignore` (alias `-i`): **deprecated (as of v0.6.0)** (due to semantic confusion); renamed to `--keep` / `-k`
+- `--ignore` (alias `-i`): **deprecated (as of v0.6.0)** (due to semantic confusion); renamed to `--keep` / `-k`
 
-* `--skip` (alias `-s`): specify a [glob pattern](https://github.com/micromatch/micromatch#matching-features) for skipping a file entirely; multiple skip-patterns can be specified by using `--skip` / `-s` multiple times in the command
+- `--skip` (alias `-s`): specify a [glob pattern](https://github.com/micromatch/micromatch#matching-features) for skipping a file entirely; multiple skip-patterns can be specified by using `--skip` / `-s` multiple times in the command
 
-* `--recursive` (alias `-r`): traverse the `--from`-specified path recursively
+- `--recursive` (alias `-r`): traverse the `--from`-specified path recursively
 
-* `--minify` (alias `-n`): minify the output (using terser), while preserving any code comments; otherwise, the output is the default serialization from the babel parser/generator
+- `--minify` (alias `-n`): minify the output (using terser), while preserving any code comments; otherwise, the output is the default serialization from the babel parser/generator
 
 The CLI tool will also read the following settings from the current process environment (or source them from a .env file in the current working directory):
 
-* `FROMPATH`: corresponds to the `--from` parameter (see above)
-* `TOPATH`: corresponds to the `--to` parameter (see above)
-* `MAPPATH`: corresponds to the `--map` parameter (see above)
+- `FROMPATH`: corresponds to the `--from` parameter (see above)
+- `TOPATH`: corresponds to the `--to` parameter (see above)
+- `MAPPATH`: corresponds to the `--map` parameter (see above)
 
 ## Library
 
@@ -127,11 +127,11 @@ The CLI tool will also read the following settings from the current process envi
 
 The typical use of **Import-remap** is through the CLI, but it can also be used in your application code. The package provides a single function called `remap(..)`, which expects the following arguments:
 
-* `codePath`: a string representing the current path of the file; not currently used, but reserved for potential future use
+- `codePath`: a string representing the current path of the file; not currently used, but reserved for potential future use
 
-* `contents`: a string holding the code from the file to be remapped
+- `contents`: a string holding the code from the file to be remapped
 
-* `importMap`: an object holding the contents of the JSON import-map
+- `importMap`: an object holding the contents of the JSON import-map
 
 The return value from `remap(..)` is a string with the remapped code. If the contents weren't parsed properly as an ES module, or if no matching specifiers were found to replace, this return value will identical to the passed in `contents` argument.
 
